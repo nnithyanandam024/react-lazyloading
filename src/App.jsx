@@ -1,7 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
-import ReloadButton from "./Reloadpage";
 import "./App.css";
 
 
@@ -19,7 +18,7 @@ const Page10 = lazy(() => import("./pages/Page10"));
 
 const App = () => {
   return (
-    <Router>
+    <Router basename="/react-lazyloading">
        <Navbar />
       <Suspense fallback={<div className="text">Loading...</div>}>
         <Routes>
@@ -36,7 +35,6 @@ const App = () => {
           <Route path="/page10" element={<Page10 />} />
         </Routes>
       </Suspense>
-      <ReloadButton />
     </Router>
   );
 };
