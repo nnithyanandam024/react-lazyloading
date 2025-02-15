@@ -1,5 +1,5 @@
 import React, { Suspense, lazy } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes , Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
@@ -18,9 +18,9 @@ const Page10 = lazy(() => import("./pages/Page10"));
 
 const App = () => {
   return (
-    <Router basename="/react-lazyloading">
+    <>
        <Navbar />
-      <Suspense fallback={<div className="text">Loading...</div>}>
+        <Suspense fallback={<div className="text">Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/page1" element={<Page1 />} />
@@ -34,8 +34,8 @@ const App = () => {
           <Route path="/page9" element={<Page9 />} />
           <Route path="/page10" element={<Page10 />} />
         </Routes>
-      </Suspense>
-    </Router>
+        </Suspense>
+        </>
   );
 };
 
