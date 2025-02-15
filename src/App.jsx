@@ -1,41 +1,91 @@
 import React, { Suspense, lazy } from "react";
-import { Routes , Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import Navbar from "./components/Navbar/Navbar";
 import "./App.css";
 
+// Lazy-loaded pages
+const Home = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Home")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page1 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page1")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page2 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page2")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page3 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page3")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page4 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page4")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page5 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page5")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page6 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page6")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page7 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page7")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page8 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page8")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page9 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page9")), 2000) // Simulates a 2-second delay
+  )
+);
+const Page10 = lazy(() =>
+  new Promise((resolve) =>
+    setTimeout(() => resolve(import("./pages/Page10")), 2000) // Simulates a 2-second delay
+  )
+);
 
-const Home = lazy(() => import("./pages/Home"));
-const Page1 = lazy(() => import("./pages/Page1"));
-const Page2 = lazy(() => import("./pages/Page2"));
-const Page3 = lazy(() => import("./pages/Page3"));
-const Page4 = lazy(() => import("./pages/Page4"));
-const Page5 = lazy(() => import("./pages/Page5"));
-const Page6 = lazy(() => import("./pages/Page6"));
-const Page7 = lazy(() => import("./pages/Page7"));
-const Page8 = lazy(() => import("./pages/Page8"));
-const Page9 = lazy(() => import("./pages/Page9"));
-const Page10 = lazy(() => import("./pages/Page10"));  
+const pages = [
+  { path: "/page1", component: Page1 },
+  { path: "/page2", component: Page2 },
+  { path: "/page3", component: Page3 },
+  { path: "/page4", component: Page4 },
+  { path: "/page5", component: Page5 },
+  { path: "/page6", component: Page6 },
+  { path: "/page7", component: Page7 },
+  { path: "/page8", component: Page8 },
+  { path: "/page9", component: Page9 },
+  { path: "/page10", component: Page10 },
+];
 
 const App = () => {
   return (
     <>
-       <Navbar />
-        <Suspense fallback={<div className="text">Loading...</div>}>
+      <Navbar />
+      <Suspense fallback={<div className="text">Loading...</div>}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/page1" element={<Page1 />} />
-          <Route path="/page2" element={<Page2 />} />
-          <Route path="/page3" element={<Page3 />} />
-          <Route path="/page4" element={<Page4 />} />
-          <Route path="/page5" element={<Page5 />} />
-          <Route path="/page6" element={<Page6 />} />
-          <Route path="/page7" element={<Page7 />} />
-          <Route path="/page8" element={<Page8 />} />
-          <Route path="/page9" element={<Page9 />} />
-          <Route path="/page10" element={<Page10 />} />
+          {pages.map(({ path, component: Component }, index) => (
+            <Route key={index} path={path} element={<Component />} />
+          ))}
         </Routes>
-        </Suspense>
-        </>
+      </Suspense>
+    </>
   );
 };
 
