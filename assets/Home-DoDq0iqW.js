@@ -1,1 +1,0 @@
-import{j as e}from"./index-B_CJSFLM.js";import{b as s}from"./vendor-DsOszMbr.js";function r(){return e.jsx(s.Suspense,{fallback:e.jsx("div",{className:"text",children:"Loading..."}),children:e.jsx("div",{className:"text",children:"This is Home page"})})}export{r as default};
