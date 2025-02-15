@@ -1,0 +1,1 @@
+import{j as s}from"./index-C2wAHQyE.js";import{b as e}from"./vendor-DsOszMbr.js";function i(){return s.jsx("div",{className:"text",children:s.jsx(e.Suspense,{fallback:s.jsx("div",{children:"Loading..."}),children:"This is Page 5"})})}export{i as default};
